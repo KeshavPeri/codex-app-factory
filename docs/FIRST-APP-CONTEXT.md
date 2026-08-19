@@ -31,7 +31,7 @@ At the end of the season, an administrator manually enters actual results. Trans
 - Predictions and actual results need a simple storage/import/export approach still to be chosen.
 - An administrator may enter real-world outcomes manually.
 
-## Decisions for the workshop
+## Product decisions
 
 - Whether each friend uses the same browser/device or needs independent entry from separate devices.
 - Whether predictions must be hidden from one another until a lock time.
@@ -40,4 +40,4 @@ At the end of the season, an administrator manually enters actual results. Trans
 - Whether entries can change before the deadline and who can lock them.
 - What happens when a category is tied or an award is shared.
 
-Those decisions materially affect storage and privacy. The factory should not infer them.
+The workshop may decide these explicitly. If any remain open when a feature runs, the Product Manager may decide scoring categories, weights, ties, edit behavior, and other reversible competition rules from the approved objective and feature context, then record its reasoning. It must escalate a choice that changes the privacy boundary, introduces new infrastructure or cost, exposes participants' data, or otherwise crosses the factory's owner-only boundary.

@@ -19,7 +19,7 @@ Link a preview when one genuinely exists. Otherwise describe the local browser/d
 
 ## Decisions and risks
 
-List material decisions, limitations, migrations, follow-up work, or `None`.
+List Product Manager decisions with their reasoning and reversibility, plus material limitations, migrations, follow-up work, or `None`.
 
 ## Owner review
 

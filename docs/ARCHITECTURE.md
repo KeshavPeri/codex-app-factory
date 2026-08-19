@@ -8,7 +8,7 @@ GitHub issue: factory:ready
           v
 Primary Codex agent (orchestrator)
           |
-          +--> Product Manager (read-only gate)
+          +--> Product Manager (read-only delegated authority)
           |
           +--> Builder (single writer)
           |
@@ -26,15 +26,17 @@ Deterministic production deployment
 
 The primary agent owns labels, branches, commits, pushes, and pull requests. This prevents role agents from racing over shared state. Only one code-writing agent runs at a time. Product and QA work remain independent and read-only.
 
+The Product Manager is more than a readiness gate. Within the approved app objective and feature scope, it resolves routine ambiguity, defines acceptance behavior, and makes reasoned, reversible product decisions. The orchestrator records material decisions before implementation. The Product Manager escalates only when a choice crosses the explicit purpose, users, scope, deadline, privacy, cost, infrastructure, safety, or owner-constraint boundary.
+
 ## Durable state
 
 The system is deliberately stateless between runs:
 
 - GitHub issue labels express queue state.
-- The issue records questions and owner decisions.
+- The issue records questions and a summary of delegated Product Manager decisions.
 - A feature branch preserves partial implementation.
 - A draft PR contains the review packet and CI history.
-- `docs/decisions.md` records expensive-to-reverse decisions.
+- `docs/decisions.md` records material delegated decisions as well as expensive-to-reverse owner decisions.
 
 A new Codex session can reconstruct the situation from those artifacts.
 

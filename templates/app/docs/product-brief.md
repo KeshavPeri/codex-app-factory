@@ -36,10 +36,14 @@ Summarize the intended personality and link to `design-reference.md`.
 
 Give observable end-to-end checks that establish the app is ready.
 
+## Delegated product authority
+
+State the ultimate app objective, the principles the Product Manager should optimize for, and any non-negotiable product constraints. Unless restricted here, the Product Manager may decide routine UX behavior, defaults, wording, edge cases, prioritization within an approved feature, and small reversible scope tradeoffs. It should document material decisions and continue.
+
 ## Owner-only boundaries
 
-List any account, billing, privacy, deployment, or destructive action the factory must escalate.
+List any app-specific boundary in addition to the factory defaults. Decisions that materially change the app's fundamental purpose, intended users, approved scope, committed deadline, privacy boundary, cost or billing, infrastructure commitment, or explicit owner constraints must be escalated. Accounts, secrets, production actions, and destructive or irreversible data operations also remain owner-only.
 
 ## Open decisions
 
-Keep unresolved questions here. Do not write implementation tickets that depend on them.
+Keep only questions outside the Product Manager's delegated authority here. Routine product ambiguity should be decided during the factory run and recorded in `decisions.md`.

@@ -17,7 +17,7 @@ The factory turns reviewed GitHub issues into tested draft pull requests. Codex 
 ## The team
 
 - **Orchestrator:** the primary Codex agent. Owns workflow state, delegation, retries, Git, and the final report.
-- **Product Manager:** checks that a feature is buildable, appropriately scoped, and has an observable definition of done.
+- **Product Manager:** acts with delegated product authority, resolves routine ambiguity from the app objective and feature context, documents its reasoning, and defines a buildable outcome with observable acceptance checks.
 - **Builder:** implements one approved ticket and runs focused checks.
 - **QA:** independently reviews the change, runs tests, and reports concrete failures. QA does not edit code.
 
@@ -30,9 +30,11 @@ GitHub issues are the durable queue.
 | `factory:ready` | Reviewed and available for a run |
 | `factory:building` | Claimed by a run |
 | `factory:review` | Draft PR is ready for the owner |
-| `factory:blocked` | A concise owner decision is required |
+| `factory:blocked` | Owner input, an external action, a dependency, or a specification change is required |
 
 One scheduled run handles at most one ticket. A run exits before loading the full repository when nothing is ready.
+
+The Product Manager should not stop for ordinary UX choices, defaults, wording, edge cases, or small reversible tradeoffs. It chooses the simplest option consistent with the approved product objective and records material decisions. The owner is interrupted only for decisions that materially change purpose, intended users, approved scope, deadline, privacy, cost, infrastructure, or another explicit constraint, plus the established account, secret, production, and destructive-action boundaries.
 
 ## Create a new app
 

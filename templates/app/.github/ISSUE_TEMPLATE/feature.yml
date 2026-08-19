@@ -55,5 +55,5 @@ body:
     attributes:
       label: Owner-only action check
       options:
-        - label: This ticket does not require a production merge, new account, billing change, new secret, destructive data operation, or unresolved high-impact product decision.
+        - label: This ticket does not require a production action, new account, billing change, new secret, destructive or irreversible data operation, privacy-boundary change, infrastructure commitment, or product decision outside the Product Manager's delegated authority.
           required: true

@@ -4,7 +4,7 @@
 
 ## 1. Owner and objective
 
-Keshav uses ChatGPT Plus and Codex to build personal applications with a small AI product team. The desired experience is feature-driven and substantially autonomous: Keshav defines or approves product intent, then the system can analyse, implement, test, repair, and prepare a reviewable pull request.
+Keshav uses ChatGPT Plus and Codex to build personal applications with a small AI product team. The desired experience is feature-driven and substantially autonomous: Keshav defines the ultimate app objective, feature direction, and non-negotiable constraints; the Product Manager can then make reasoned product decisions within that mandate while the system analyses, implements, tests, repairs, and prepares a reviewable pull request.
 
 The system should work across many kinds of personal apps. It is not tied to football, fantasy sports, a particular framework, a database, or a hosting provider.
 
@@ -29,7 +29,7 @@ Each app repository receives:
 - `.github/ISSUE_TEMPLATE/feature.yml`: a feature ticket with an observable definition of done;
 - `docs/product-brief.md`: product scope and rules;
 - `docs/design-reference.md`: visual and interaction direction;
-- `docs/decisions.md`: expensive-to-reverse decisions and their reasons;
+- `docs/decisions.md`: material delegated Product Manager decisions, owner decisions, and their reasons;
 - `factory/PROJECT-CONFIG.md`: the actual setup, test, lint, build, run, QA, and deploy commands;
 - `factory/AUTOMATION-PROMPT.md`: the prompt used for manual or scheduled factory runs;
 - `factory/REVIEW-PACKET.md`: the required pull-request evidence.
@@ -44,15 +44,18 @@ The primary Codex agent is the orchestrator. It owns the workflow, issue labels,
 
 ### Product Manager
 
-The Product Manager is read-only. It checks that the selected ticket:
+The Product Manager is read-only but has delegated product authority. It acts as Keshav's trusted app manager, using the ultimate app objective, product brief, design direction, feature issue, backlog context when supplied, and existing decisions to keep approved work moving. It:
 
 - matches the product brief;
 - is small enough for one focused pull request;
-- has observable acceptance criteria;
-- does not depend on missing work or an unresolved high-impact decision;
+- defines or sharpens observable acceptance criteria;
+- decides routine UX behavior, sensible defaults, wording, edge cases, routine domain rules, prioritization within the ticket, and small reversible scope tradeoffs;
+- explains each material decision from owner intent, user value, deadline, consistency, simplicity, privacy, and reversibility;
+- prefers the simplest reversible option when evidence is incomplete and risk is low;
+- does not depend on missing work;
 - does not silently require an owner-only action.
 
-It returns either `READY` with acceptance checks or `BLOCKED` with one concise owner-facing question.
+It returns either `READY` with acceptance checks and any material decisions, or `BLOCKED` with the crossed authority boundary and one concise owner-facing question. A missing routine detail is not a blocker. The orchestrator records material Product Manager decisions in `docs/decisions.md` and summarizes them on the issue before implementation.
 
 ### Builder
 
@@ -73,7 +76,7 @@ The oldest open issue labelled `factory:ready` is the next available feature.
 | `factory:ready` | Reviewed and available for a factory run |
 | `factory:building` | Claimed by an active or recoverable run |
 | `factory:review` | Draft pull request is ready for Keshav |
-| `factory:blocked` | A concise owner decision or specification change is required |
+| `factory:blocked` | Owner input, an external action, a dependency, or a specification change is required |
 
 Feature branches use `codex/ticket-<issue-number>-<short-slug>`.
 
@@ -85,8 +88,8 @@ The `$codex-app-factory` skill processes at most one ticket:
 2. If none exists, report `Nothing ready` and stop cheaply.
 3. Check for an existing branch or pull request and recover it when safe.
 4. Otherwise claim the issue with `factory:building` and create its feature branch from current `main`.
-5. Ask the Product Manager for `READY` or `BLOCKED`.
-6. If blocked, comment with its single question, label the issue `factory:blocked`, preserve state, and stop.
+5. Ask the Product Manager to exercise delegated product authority and return `READY` or `BLOCKED`.
+6. If ready, record and summarize any material Product Manager decisions before implementation. If blocked, comment with the crossed boundary and its single question, label the issue `factory:blocked`, preserve state, and stop.
 7. Ask one Builder to implement and validate the approved scope.
 8. Ask QA to independently verify it.
 9. If QA finds a correctable failure, send one focused revision to the same Builder, then repeat QA.
@@ -107,9 +110,9 @@ Codex must stop and request explicit approval before:
 - adding or rotating secrets;
 - destructive or irreversible data operations;
 - exposing private data or changing a privacy boundary;
-- resolving a high-impact product decision the brief leaves open.
+- making a product decision that materially changes the app's fundamental purpose, intended users, approved scope, committed deadline, privacy boundary, cost or billing, infrastructure commitment, or another explicit owner constraint.
 
-Routine reversible implementation choices inside an approved ticket do not require escalation.
+Routine reversible product and implementation choices inside an approved objective and ticket do not require escalation. The Product Manager should make them, document material ones, and continue.
 
 ## 8. Starting a new app
 

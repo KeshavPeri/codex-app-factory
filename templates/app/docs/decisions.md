@@ -1,6 +1,6 @@
 # Decisions
 
-Record decisions that would be costly or confusing to rediscover. Routine implementation details belong in code and pull requests.
+Record material product decisions so a future run can reconstruct not only what was chosen but why. Routine implementation details still belong in code and pull requests.
 
 ## High impact
 
@@ -10,10 +10,15 @@ Record decisions that would be costly or confusing to rediscover. Routine implem
 - **Because:**
 - **Alternatives rejected:**
 - **Consequences:**
+- **Authority:** Owner approved / Owner constraint
 
-## Routine
+## Product Manager decisions
 
 ### YYYY-MM-DD — Decision title
 
 - **Decision:**
 - **Because:**
+- **Evidence used:** Product brief / feature issue / design reference / existing decision
+- **Confidence:** High / Medium / Low
+- **Reversibility:** Easy / Moderate
+- **Authority:** Delegated product authority

@@ -49,4 +49,9 @@ if rg -n 'TODO|\[TODO' "$root" --glob '!scripts/check-harness.sh'; then
   exit 1
 fi
 
+rg -q 'delegated product authority' "$root/.codex/agents/product_manager.toml"
+rg -q 'simplest reversible option' "$root/.agents/skills/codex-app-factory/SKILL.md"
+rg -q '^## Delegated product authority' "$root/templates/app/docs/product-brief.md"
+rg -q 'Product Manager decisions' "$root/templates/app/docs/decisions.md"
+
 printf 'Harness structure and agent TOML validated.\n'
