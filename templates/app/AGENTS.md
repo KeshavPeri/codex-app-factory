@@ -28,13 +28,13 @@
 ## Engineering expectations
 
 - Prefer the simplest architecture that satisfies the product brief.
-- Keep business rules, including scoring logic, explicit and independently testable.
+- Keep domain and business rules explicit and independently testable.
 - Add tests for behavior changed by a ticket.
-- Run `npm test --if-present`, `npm run lint --if-present`, and `npm run build --if-present` before preparing a pull request.
+- Read `factory/PROJECT-CONFIG.md` for the repository's setup, test, lint, build, run, and deployment commands. Do not invent commands when that file is incomplete.
 - Treat CI as the deterministic release gate and agent QA as an additional independent review.
 
 ## Code review rules
 
-- Flag incorrect product or scoring behavior before style concerns.
-- Flag any path that can overwrite user predictions, leak hidden predictions, merge automatically, or deploy an unreviewed branch.
-- Require explicit handling for empty, duplicate, tied, missing, and invalid result data where relevant.
+- Flag incorrect product and domain behavior before style concerns.
+- Flag any path that can corrupt user data, disclose information contrary to the brief, merge automatically, or deploy an unreviewed branch.
+- Require explicit handling for relevant empty, duplicate, missing, invalid, concurrent, and failure states.

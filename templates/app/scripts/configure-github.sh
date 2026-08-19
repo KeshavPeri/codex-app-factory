@@ -15,4 +15,4 @@ gh label create 'factory:review' --repo "$repo" --color '8250DF' --description '
 gh label create 'factory:blocked' --repo "$repo" --color 'CF222E' --description 'A concise owner decision or specification change is required' --force
 
 printf 'Configured factory labels for %s\n' "$repo"
-printf 'Enable GitHub Pages with GitHub Actions in repository settings after the first app build is on main.\n'
+printf 'Configure the deployment provider named in factory/PROJECT-CONFIG.md after the smoke build passes.\n'

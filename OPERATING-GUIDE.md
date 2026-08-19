@@ -2,12 +2,15 @@
 
 ## Start a new app
 
-1. Run `scripts/new-app.sh` with an empty target directory.
-2. Complete `docs/product-brief.md` from the design workshop.
-3. Record expensive-to-reverse decisions in `docs/decisions.md`.
-4. Create small GitHub issues with observable acceptance criteria.
-5. Run one trivial smoke ticket manually through `$codex-app-factory`.
-6. Only after that succeeds, create a scheduled Codex task using `factory/AUTOMATION-PROMPT.md`.
+1. Choose the generic template or a justified technology profile.
+2. Run `scripts/new-app.sh` with an empty target directory and optional profile name.
+3. Complete `docs/product-brief.md` from the design workshop.
+4. Record expensive-to-reverse decisions in `docs/decisions.md`.
+5. Fill `factory/PROJECT-CONFIG.md` with the app's real setup, verification, QA, and deployment commands.
+6. Create the app baseline, GitHub repository, workflow labels, CI, and owner-reviewed deployment.
+7. Create small GitHub issues with observable acceptance criteria.
+8. Run one trivial smoke ticket manually through `$codex-app-factory`.
+9. Only after that succeeds, create a scheduled Codex task using `factory/AUTOMATION-PROMPT.md`.
 
 ## Normal review loop
 

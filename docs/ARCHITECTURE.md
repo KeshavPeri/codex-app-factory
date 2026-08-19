@@ -38,9 +38,11 @@ The system is deliberately stateless between runs:
 
 A new Codex session can reconstruct the situation from those artifacts.
 
-## Deployment
+## Technology and deployment profiles
 
-The default app template targets a static Vite-compatible build deployed to GitHub Pages after a merge to `main`. Pull requests run CI but do not deploy production. Projects with different infrastructure should replace the Pages workflow deliberately and record the decision in the product brief.
+The core template does not select a language, framework, database, hosting provider, or deployment target. Those decisions belong in each app's product brief and `factory/PROJECT-CONFIG.md`.
+
+Optional profiles can add reusable stack-specific files without changing the orchestration model. The included `static-web` profile supplies npm-based CI and GitHub Pages deployment after a merge to `main`. Other apps can add profiles for a mobile app, desktop app, backend service, data tool, or a different web stack.
 
 ## Subscription boundary
 

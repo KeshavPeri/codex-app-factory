@@ -18,7 +18,7 @@ State what V1 intentionally does not attempt.
 
 ## Product rules
 
-Record scoring, permissions, deadlines, visibility, tie handling, and other rules that must be implemented consistently.
+Record permissions, calculations, deadlines, visibility, state changes, validation, and other domain rules that must be implemented consistently.
 
 ## Data and privacy
 

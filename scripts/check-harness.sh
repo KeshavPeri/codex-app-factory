@@ -12,14 +12,16 @@ required_files='AGENTS.md
 .agents/skills/codex-app-factory/agents/openai.yaml
 templates/app/AGENTS.md
 templates/app/.github/ISSUE_TEMPLATE/feature.yml
-templates/app/.github/workflows/ci.yml
-templates/app/.github/workflows/pages.yml
 templates/app/docs/product-brief.md
 templates/app/docs/design-reference.md
 templates/app/docs/decisions.md
 templates/app/factory/AUTOMATION-PROMPT.md
 templates/app/factory/REVIEW-PACKET.md
-templates/app/scripts/configure-github.sh'
+templates/app/factory/PROJECT-CONFIG.md
+templates/app/scripts/configure-github.sh
+templates/profiles/static-web/.github/workflows/ci.yml
+templates/profiles/static-web/.github/workflows/pages.yml
+templates/profiles/static-web/factory/PROJECT-CONFIG.md'
 
 printf '%s\n' "$required_files" | while IFS= read -r file; do
   if [ ! -s "$root/$file" ]; then
